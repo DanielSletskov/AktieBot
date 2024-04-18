@@ -1,5 +1,4 @@
 #aktiebot 
-#
 from lumibot.brokers import Alpaca
 from lumibot.backtesting import YahooDataBacktesting
 from lumibot.traders import Trader
@@ -17,6 +16,7 @@ ALPACA_CREDS = {
     "PAPER": True
 }
 
+#Class for all trading strategy
 class MLTrader(Strategy):
     def initializa(self, symbol:str="SPY"):
         self.symbol = symbol
@@ -35,9 +35,9 @@ class MLTrader(Strategy):
             self.last_trade = "buy"
             
 
-
-start_date = datetime(2024,4,1)
-end_date = datetime(2024,4,15)
+#sets the limit for when we are testing 
+start_date = datetime(2024,2,1)
+end_date = datetime(2024,2,15)
 
 broker = Alpaca(ALPACA_CREDS)
 strategy = MLTrader(name='mlStrat', broker=broker,
